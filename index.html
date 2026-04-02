@@ -777,42 +777,36 @@
     status.className = '';
     status.style.display = 'none';
 
-    const BOT_TOKEN = '7956735077:AAGpKFFTe4sTpOJpWC2pnA5p0bk3U3jFDqc';
-    const CHAT_ID  = '-1002310215208';
+    const CHAT_ID = '-1002310215208';
 
-    const text = [
-      '🔔 *Новая заявка с лендинга AI Агент*',
-      '',
-      `👤 *Имя:* ${name}`,
-      `📞 *Телефон:* ${phone}`,
-      message ? `💬 *Сообщение:*\n${message}` : '',
-      '',
-      `🕐 ${new Date().toLocaleString('ru-RU', { timeZone: 'Europe/Minsk' })}`
-    ].filter(Boolean).join('\n');
+    const text =
+      '🆕 Новая заявка с сайта Agent Marketplace\n' +
+      'Имя: ' + name + '\n' +
+      'Телефон: ' + phone + '\n' +
+      'Сообщение: ' + (message || '—');
 
     try {
-      const res = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          chat_id: CHAT_ID,
-          text: text,
-          parse_mode: 'Markdown'
-        })
-      });
+      const res = await fetch(
+        'https://api.telegram.org/bot7956735077:AAGpKFFTe4sTpOJpWC2pnA5p0bk3U3jFDqc/sendMessage',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ chat_id: CHAT_ID, text: text })
+        }
+      );
 
       const data = await res.json();
 
       if (data.ok) {
         status.className = 'success';
-        status.textContent = '✓ Заявка отправлена! Мы свяжемся с вами в ближайшее время.';
+        status.textContent = 'Заявка отправлена! Мы свяжемся с вами в ближайшее время.';
         document.getElementById('contactForm').reset();
       } else {
         throw new Error(data.description || 'Telegram API error');
       }
     } catch (err) {
       status.className = 'error';
-      status.textContent = 'Ошибка отправки. Напишите нам напрямую в Telegram: @neuro_sites';
+      status.textContent = 'Что-то пошло не так. Позвоните нам: +375296160866';
       console.error(err);
     } finally {
       btn.disabled = false;
