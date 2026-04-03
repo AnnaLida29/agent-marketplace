@@ -426,11 +426,30 @@
       border-radius: 16px; overflow: hidden;
       border: 1px solid var(--border);
       box-shadow: var(--shadow);
+      display: block; text-decoration: none;
+      cursor: pointer;
     }
-    .video-wrap iframe {
+    .video-wrap img {
       position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      border: none;
+      object-fit: cover; display: block;
+      transition: transform .35s ease;
     }
+    .video-wrap:hover img { transform: scale(1.03); }
+    .video-play {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 72px; height: 72px; border-radius: 50%;
+      background: #ff0000;
+      box-shadow: 0 6px 28px rgba(0,0,0,.5);
+      display: flex; align-items: center; justify-content: center;
+      transition: transform .25s ease, box-shadow .25s ease;
+      pointer-events: none;
+    }
+    .video-wrap:hover .video-play {
+      transform: translate(-50%, -50%) scale(1.15);
+      box-shadow: 0 10px 36px rgba(0,0,0,.6);
+    }
+    .video-play svg { margin-left: 5px; }
 
     /* ── DIVIDER GRADIENT ── */
     .section-sep {
@@ -778,14 +797,18 @@
     <div class="section-tag">Демо</div>
     <h2>Смотрите как работает агент</h2>
     <p class="section-sub" style="margin-bottom:36px;">Реальная демонстрация работы агента: мониторинг, алерты, утренний отчёт в Telegram</p>
-    <div class="video-wrap">
-      <iframe
-        src="https://www.youtube.com/embed/CZ0a6ed8tkw"
-        title="Демо AI агента для маркетплейсов WB и Ozon"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
-    </div>
+    <a class="video-wrap" href="https://youtu.be/CZ0a6ed8tkw" target="_blank" rel="noopener" aria-label="Смотреть демо на YouTube">
+      <img
+        src="https://img.youtube.com/vi/CZ0a6ed8tkw/maxresdefault.jpg"
+        alt="Демо AI агента для маркетплейсов WB и Ozon"
+        loading="lazy"
+      />
+      <div class="video-play">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff">
+          <polygon points="5,3 19,12 5,21"/>
+        </svg>
+      </div>
+    </a>
   </div>
 </section>
 
