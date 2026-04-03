@@ -380,6 +380,58 @@
     }
     .mobile-nav a:hover { color: var(--text); }
 
+    /* ── TIMELINE SCREENSHOT ── */
+    .timeline-img {
+      margin-top: 12px;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      max-width: 100%;
+    }
+    .timeline-img img {
+      display: block; width: 100%; height: auto;
+      border-radius: 10px;
+      transition: transform .3s;
+    }
+    .timeline-item:hover .timeline-img img { transform: scale(1.01); }
+
+    /* ── RESULTS BLOCK ── */
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .result-card {
+      background: #f8f9ff;
+      border: 1px solid #e0e4f7;
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      display: flex; flex-direction: column; align-items: flex-start;
+      gap: 14px;
+      transition: box-shadow .25s, transform .25s;
+    }
+    .result-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(79,70,229,.12); }
+    .result-card-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      background: linear-gradient(135deg, #ede9fe, #dbeafe);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .result-card-title { font-size: 1.05rem; font-weight: 700; color: #1e1b4b; }
+    .result-card-desc { font-size: .9rem; color: #4b5563; line-height: 1.55; }
+
+    /* ── VIDEO ── */
+    .video-wrap {
+      position: relative; padding-bottom: 56.25%; height: 0;
+      border-radius: 16px; overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+    .video-wrap iframe {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      border: none;
+    }
+
     /* ── DIVIDER GRADIENT ── */
     .section-sep {
       height: 1px;
@@ -427,7 +479,7 @@
 <section class="hero" id="top">
   <div class="hero-inner">
     <div class="hero-badge">AI-автоматизация маркетплейсов</div>
-    <h1>Разработка AI агента для вашего бизнеса на Wildberries и Ozon</h1>
+    <h1>Помощник менеджера маркетплейсов</h1>
     <p class="hero-sub">
       Подключим агента который отслеживает конкурентов, считает цены, проверяет остатки
       и присылает только важное — <strong>в Telegram</strong>.
@@ -496,35 +548,39 @@
     <div class="timeline">
       <div class="timeline-item">
         <div class="timeline-time">03:00 🌙</div>
-        <div>
+        <div style="flex:1;">
           <div class="timeline-text"><strong>Мониторинг конкурентов</strong></div>
           <div style="font-size:.85rem;color:var(--muted);margin-top:4px;">Каждую ночь агент собирает цены, позиции и остатки по всем конкурентам в вашей нише</div>
+          <div class="timeline-img"><img src="screenshot1.jpg" alt="Мониторинг конкурентов" loading="lazy" /></div>
         </div>
       </div>
       <div class="timeline-item">
         <div class="timeline-time">каждые 2 ч</div>
-        <div>
+        <div style="flex:1;">
           <div class="timeline-text"><strong>Пересчёт цен</strong></div>
           <div style="font-size:.85rem;color:var(--muted);margin-top:4px;">Автоматически пересчитывает рекомендованные цены с учётом конкурентного поля и маржи</div>
+          <div class="timeline-img"><img src="screenshot2.jpg" alt="Пересчёт цен" loading="lazy" /></div>
         </div>
       </div>
       <div class="timeline-item">
         <div class="timeline-time">08:30 ☀️</div>
-        <div>
+        <div style="flex:1;">
           <div class="timeline-text"><strong>Утренний отчёт</strong></div>
           <div style="font-size:.85rem;color:var(--muted);margin-top:4px;">Ежедневный дайджест: ключевые изменения за ночь, сводка по продажам и остаткам</div>
+          <div class="timeline-img"><img src="screenshot3.jpg" alt="Утренний отчёт" loading="lazy" /></div>
         </div>
       </div>
       <div class="timeline-item">
         <div class="timeline-time">каждые 30 мин</div>
-        <div>
+        <div style="flex:1;">
           <div class="timeline-text"><strong>Критические алерты</strong></div>
           <div style="font-size:.85rem;color:var(--muted);margin-top:4px;">Мгновенные уведомления при резких изменениях цен, позиций или остатков</div>
+          <div class="timeline-img"><img src="screenshot4.jpg" alt="Критические алерты" loading="lazy" /></div>
         </div>
       </div>
       <div class="timeline-item">
         <div class="timeline-time">раз в неделю</div>
-        <div>
+        <div style="flex:1;">
           <div class="timeline-text"><strong>SEO-анализ карточек через Claude AI</strong></div>
           <div style="font-size:.85rem;color:var(--muted);margin-top:4px;">ИИ проверяет тексты, ключевые слова и изображения карточек — даёт рекомендации по улучшению</div>
         </div>
@@ -669,6 +725,66 @@
           <span class="roi-stat-val green">≈ 2 месяца</span>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-sep"></div>
+
+<!-- RESULTS -->
+<section id="results" style="background:#f0f2ff;">
+  <div class="section-inner">
+    <div class="section-tag" style="background:rgba(79,70,229,.1);border-color:rgba(79,70,229,.3);color:#4f46e5;">Результат</div>
+    <h2 style="color:#1e1b4b;">В результате вы получаете</h2>
+    <p class="section-sub" style="color:#4b5563;">Агент берёт на себя рутину — вы сосредотачиваетесь на росте бизнеса.</p>
+
+    <div class="results-grid">
+      <div class="result-card">
+        <div class="result-card-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <div class="result-card-title">Время</div>
+        <div class="result-card-desc">Будете тратить на мониторинг 15 минут в день вместо 3 часов</div>
+      </div>
+      <div class="result-card">
+        <div class="result-card-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+        </div>
+        <div class="result-card-title">Поддержку</div>
+        <div class="result-card-desc">Агент сам разбудит вас если товар заканчивается</div>
+      </div>
+      <div class="result-card">
+        <div class="result-card-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+        </div>
+        <div class="result-card-title">Контроль</div>
+        <div class="result-card-desc">Цены всегда будут конкурентными без ручной проверки</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-sep"></div>
+
+<!-- VIDEO -->
+<section id="video">
+  <div class="section-inner">
+    <div class="section-tag">Демо</div>
+    <h2>Смотрите как работает агент</h2>
+    <p class="section-sub" style="margin-bottom:36px;">Реальная демонстрация работы агента: мониторинг, алерты, утренний отчёт в Telegram</p>
+    <div class="video-wrap">
+      <iframe
+        src="https://www.youtube.com/embed/CZ0a6ed8tkw"
+        title="Демо AI агента для маркетплейсов WB и Ozon"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
     </div>
   </div>
 </section>
